@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -65,6 +65,29 @@ class ProjectProject(models.Model):
 
     # Show Programming
     va_show_programming = fields.Boolean(string='Show Programming', store=True)
+
+    @api.model
+    def create(self, vals):
+        """
+        Override the create method to assign the sequence value
+        when a new project is created.
+        """
+        if not vals.get('x_studio_job_id'):
+            # Get the next sequence number from 'seq_project_job_id'
+            vals['x_studio_job_id'] = self.env['ir.sequence'].next_by_code('seq_project_job_id') or '/'
+
+        return super(ProjectProject, self).create(vals)
+
+    def write(self, vals):
+        """
+        Override the write method to assign the sequence value if not already assigned
+        when a project record is updated.
+        """
+        for record in self:
+            if not record.x_studio_job_id:
+                vals['x_studio_job_id'] = self.env['ir.sequence'].next_by_code('seq_project_job_id') or '/'
+
+        return super(ProjectProject, self).write(vals)
 
     def _migrate_studio_fields(self):
         """Perform data migration after module upgrade."""
