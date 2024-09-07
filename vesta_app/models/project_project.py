@@ -72,9 +72,9 @@ class ProjectProject(models.Model):
         Override the create method to assign the sequence value
         when a new project is created.
         """
-        if not vals.get('x_studio_job_id'):
+        if not vals.get('va_job_id'):
             # Get the next sequence number from 'seq_project_job_id'
-            vals['x_studio_job_id'] = self.env['ir.sequence'].next_by_code('seq_project_job_id') or '/'
+            vals['va_job_id'] = self.env['ir.sequence'].next_by_code('seq_project_job_id') or ''
 
         return super(ProjectProject, self).create(vals)
 
@@ -85,7 +85,7 @@ class ProjectProject(models.Model):
         """
         for record in self:
             if not record.x_studio_job_id:
-                vals['x_studio_job_id'] = self.env['ir.sequence'].next_by_code('seq_project_job_id') or '/'
+                vals['va_job_id'] = self.env['ir.sequence'].next_by_code('seq_project_job_id') or ''
 
         return super(ProjectProject, self).write(vals)
 

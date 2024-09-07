@@ -8,8 +8,8 @@ import logging
 _logger = logging.getLogger(__name__)
 
 """
-    STEPS OF DATA THE MIGRATIONS PROCESS
-    1. Mapping of the existing studion fields
+    STEPS OF DATA MIGRATIONS PROCESS
+    1. Mapping of the existing studio fields
     2. Migrate the data of x_studio field to the new field of va_
     3. Dropping table columns that starts with x_studio_ fields
         Note: Make sure to uninstall the studio customization module to avoid error in the views
