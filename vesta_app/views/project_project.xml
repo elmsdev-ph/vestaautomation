@@ -1,0 +1,34 @@
+<odoo>
+    <!-- Inherit the existing form view of 'project.project' -->
+    <record id="view_project_project_form_inherit" model="ir.ui.view">
+        <field name="name">project.project.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <!-- Locate the position to add fields -->
+            <xpath expr="//field[@name='label_tasks']" position="after">
+                <!-- Add your fields after the 'name' field -->
+                <field name="va_anticipated_completion"/>
+                <field name="va_award_date"/>
+                <field name="va_comments_legacy"/>
+                <field name="va_complete_cad"/>
+                <field name="va_complete_electrical"/>
+                <field name="va_complete_panel"/>
+                <field name="va_complete_parts"/>
+                <field name="va_complete_prog"/>
+                <field name="va_completed_date"/>
+                <field name="va_contract_value"/>
+                <field name="va_cost_to_complete"/>
+                <field name="va_customer_po"/>
+                <field name="va_job_id"/>
+                <field name="va_left_to_bill"/>
+                <field name="va_quote_legacy"/>
+                <field name="va_show_design"/>
+                <field name="va_show_field_install"/>
+                <field name="va_show_ordering"/>
+                <field name="va_show_panel_build"/>
+                <field name="va_show_programming"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

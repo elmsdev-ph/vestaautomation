@@ -16,6 +16,10 @@
         'stock',
     ],
     'data': [
+        'views/documents_document.xml',
+        'views/product_product.xml',
+        'views/product_template.xml',
+        'views/project_project.xml'
     ],
     'pre_init_hook': 'get_studio_fields',
     'post_init_hook': 'post_upgrade_hook',

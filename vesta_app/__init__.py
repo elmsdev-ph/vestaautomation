@@ -62,4 +62,4 @@ def post_upgrade_hook(env):
     """Post-upgrade hook to run after upgrading the module."""
     _migrate_studio_fields_data(env)
     # Dropping tables columns that starts with x_studio fields
-    _drop_studio_col_fields(env)
+    # _drop_studio_col_fields(env)

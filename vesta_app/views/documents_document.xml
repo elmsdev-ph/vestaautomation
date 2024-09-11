@@ -1,0 +1,17 @@
+<odoo>
+    <!-- Inherit the existing form view of 'documents.document' -->
+    <record id="view_documents_document_tree_inherit" model="ir.ui.view">
+        <field name="name">documents.document.tree.inherit</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.documents_view_list"/>
+        <field name="arch" type="xml">
+            <!-- Locate the position to add fields -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <!-- Add your fields after partner_id -->
+                <field name="va_file_category"/>
+                <field name="va_file_project"/>
+                <field name="va_file_salesorder"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

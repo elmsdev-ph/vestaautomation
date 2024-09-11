@@ -1,0 +1,40 @@
+<odoo>
+    <!-- Inherit the existing form view of 'product.template' -->
+    <record id="view_product_template_form_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Locate the position to add fields -->
+            <!-- <xpath expr="//field[@name='list_price']" position="after">
+                <field name="va_cut_sheet"/>
+                <field name="va_cut_sheet_filename"/>
+                <field name="va_description"/>
+                <field name="va_mfr_number"/>
+                <field name="va_product_code"/>
+                <field name="va_suppliers_code"/>
+                <field name="va_suppliers_webpage"/>
+            </xpath> -->
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+                <field name="va_suppliers_webpage" string="Supplier's Webpage" widget="url"/>
+                <field name="va_description" string="Additional Notes" widget="field_partner_autocomplete"/>
+            </xpath>
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="va_product_code" string="Product Code"/>
+            </xpath>
+            <xpath expr="//field[@name='product_tag_ids']" position="attributes">
+                <attribute name="string">MFR Name</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_tag_ids']" position="after">
+                <field name="va_mfr_number" string="MFR Number"/>
+            </xpath>
+            <xpath expr="//form[@name='Product Template']/sheet[@name='product_form']/notebook[1]/page[@name='general_information']/group[2]" position="after">
+                <field widget="file" filename="va_cut_sheet_filename" name="va_cut_sheet" string="Cut Sheet"/>
+                <field widget="file" invisible="1" name="va_cut_sheet_filename"/>
+            </xpath>
+            <xpath expr="//field[@name='description_purchase']" position="after">
+                <field name="va_preferred_vendor" string="Preferred Vendor"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

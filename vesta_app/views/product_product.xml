@@ -1,0 +1,26 @@
+<odoo>
+    <!-- Inherit the existing form view of 'product.product' -->
+    <record id="view_product_product_form_inherit" model="ir.ui.view">
+        <field name="name">product.product.form.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Locate the position to add fields -->
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <!-- Add your fields after the 'name' field -->
+                <field name="va_cut_sheet"/>
+                <field name="va_cut_sheet_filename"/>
+                <field name="va_description"/>
+                <field name="va_mfr_code"/>
+                <field name="va_mfr_number"/>
+                <field name="va_product_code"/>
+                <field name="va_suppliers_code"/>
+                <field name="va_suppliers_webpage"/>
+            </xpath>
+            <xpath expr="//field[@name='attribute_line_ids']" position="after">
+                <field name="va_mfr_number"/>
+                <field name="va_product_code"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
